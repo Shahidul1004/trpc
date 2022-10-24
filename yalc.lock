@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "packages": {
+    "prisma-trpc-generator": {
+      "signature": "90dea8c070b628afc6eae4dff8b692ce",
+      "file": true,
+      "replaced": "^0.4.4"
+    },
+    "prisma-trpc-generator-shahidul": {
+      "signature": "c15764e8dc771b609b8fb705d4639a9a",
+      "file": true
+    }
+  }
+}

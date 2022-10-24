@@ -1,0 +1,40 @@
+// datasource db {
+//     provider = "postgres"
+//     url      = "postgresql://postgres:@localhost:5432/next-prisma-starter-new"
+// }
+
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dev.db"
+}
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["metrics"]
+    binaryTargets   = ["native", "rhel-openssl-1.0.x"]
+    output          = "../src/server/client"
+}
+
+generator trpc {
+    provider       = "prisma-trpc-generator"
+    withMiddleware = false
+    withShield     = false
+    contextPath    = "../../../context"
+    output         = "../src/server/trpc"
+}
+
+model User {
+    id    Int    @id @default(autoincrement())
+    name  String
+    posts Post[]
+}
+
+model Post {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title     String
+    content   String?
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  Int
+}
