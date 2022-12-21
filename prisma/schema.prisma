@@ -16,11 +16,13 @@ generator client {
 }
 
 generator trpc {
-    provider       = "prisma-trpc-generator"
-    withMiddleware = false
-    withShield     = false
-    contextPath    = "../../../context"
-    output         = "../src/server/trpc"
+    provider          = "prisma-trpc-generator"
+    withMiddleware    = false
+    withShield        = false
+    isGenerateSelect  = true
+    isGenerateInclude = true
+    contextPath       = "../../../context"
+    output            = "../src/server/trpc"
 }
 
 model User {
